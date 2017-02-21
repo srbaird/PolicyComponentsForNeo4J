@@ -1,6 +1,6 @@
 ## Policy Database on [Neo4j](https://neo4j.com)
 
-This a section of an existing application which used Neo4j as data persistence which broadly mirrors the functionality of the Google Datastore [example](https://github.com/srbaird/PolicyComponentsForDataStore). A [document]() exists to give background into the approach
+This a section of an existing application which used Neo4j as data persistence which broadly mirrors the functionality of the Google Datastore [example](https://github.com/srbaird/PolicyComponentsForDataStore). This other example adds includes use cases and a [document]() exists to give background into the approach
 ___
 
 In short the project creates a method of converting a graph data store into macro entities based on a composite pattern. Thus a graph of entities and relationships starting at the centre node...
@@ -55,7 +55,7 @@ import static com.bac.application.predicate.Where.or;
 
 ```
 
-In this case the element that satisfies the date context AND either the type context OR the privilege context will return true for this query.
+In this case the element that satisfies the date context *AND* either the type context *OR* the privilege context will return true for this query. 
 
 ___
 
