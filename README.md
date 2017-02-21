@@ -27,8 +27,19 @@ class SomeEntity extends Entity  {
 
 		return context.isFieldValid(someLocalField);
 	}
-
+...
 }
+```
+
+For the above example the following will determine whether the instance is valid for the context
+
+```
+	SomeEntity entity;
+	SomeDateContext context;
+	LateBindingContextDispatcher dispatcher;
+	
+	boolean isValidForContext = dispatcher.dispatch(entity, context);
+	
 ```
 
 This dispatching behaviour is combined with a [predicate](https://github.com/srbaird/PolicyComponentsForNeo4J/blob/master/src/main/java/com/bac/application/predicate/Where.java) builder which allows complex conditional views of a data structure to be obtained.
