@@ -1,0 +1,50 @@
+EntityRelationship<PolicyEntity, Relationship<ApplicationRelationshipType>>
+
+
+
+
+where(
+	where(
+		func(), or(func())
+	),
+	or(
+		func(), 
+		and(func())
+	)
+)
+
+
+where(), and(), or()
+
+
+public static 	Predicate where(Predicate ...)
+public static	Predicate where(func(), Predicate ...)
+
+
+public static	AndPredicate and(Predicate ...)
+public static	AndPredicate and(func(), Predicate ...)
+
+
+public static	OrPredicate or(Predicate ...)
+public static	OrPredicate or(func(), Predicate ...)
+
+
+				Predicate
+
+	WherePredicate		AndPredicate		OrPredicate
+
+	foldLeft(true)(		foldLeft(acc)(		foldLeft(acc)(
+
+
+Predicate(Predicate ...args)
+
+Predicate(Func()  func, Predicate ...args)
+
+
+
+
+
+func: () -> boolean	===	dispatch(entity, context)
+
+
+

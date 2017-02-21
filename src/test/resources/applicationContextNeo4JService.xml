@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-lazy-init="false"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:cache="http://www.springframework.org/schema/cache">
+
+	
+	<bean id="graphDbFactory" class="org.neo4j.test.TestGraphDatabaseFactory" />
+
+	<bean id="graphDbBuilder" factory-bean="graphDbFactory"	factory-method="newImpermanentDatabaseBuilder"  >
+	</bean>
+
+	<bean id="graphDatabaseService" factory-bean="graphDbBuilder"
+		factory-method="newGraphDatabase" destroy-method="shutdown"   />
+
+</beans>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans default-lazy-init="false"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:cache="http://www.springframework.org/schema/cache">
+
+
+	<!-- Service to resolve the RelationhipTypes -->
+
+	<bean id="relationshipTypeResolverFromEnum"
+		class="com.bac.application.impl.RelationshipTypeResolverFromEnum" />
+
+	<!-- Include the Application Relationship types -->
+
+	<bean class="org.springframework.beans.factory.config.MethodInvokingBean">
+		<property name="targetObject" ref="relationshipTypeResolverFromEnum" />
+		<property name="targetMethod" value="include" />
+		<property name="arguments">
+			<value>com.bac.application.impl.ApplicationRelationshipTypes</value>
+		</property>
+	</bean>
+
+	<!-- Service to resolve the RelationhipTypes -->
+
+	<bean id="dataTypeResolverFromEnum" class="com.bac.application.impl.DataTypeResolverFromEnum" />
+
+	<!-- Include the Application Data types -->
+
+	<bean class="org.springframework.beans.factory.config.MethodInvokingBean">
+		<property name="targetObject" ref="dataTypeResolverFromEnum" />
+		<property name="targetMethod" value="include" />
+		<property name="arguments">
+			<value>com.bac.application.impl.ApplicationDataTypes</value>
+		</property>
+	</bean>
+	
+</beans>
