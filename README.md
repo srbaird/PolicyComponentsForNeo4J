@@ -1,9 +1,9 @@
 ## Policy Database on [Neo4j](https://neo4j.com)
 
-
+This a section of an existing application which used Neo4j as data persistence which broadly mirrors the functionality of the Google Datastore [example](https://github.com/srbaird/PolicyComponentsForDataStore). A [document]() exists to give background into the approach
 ___
 
-If building this project using Eclipse it may be necessary to enable Groovy 
+If building this project using Eclipse it may be necessary to enable Groovy. The following is an example to acheive this.
 
 ```
 Help → Install New Software…
