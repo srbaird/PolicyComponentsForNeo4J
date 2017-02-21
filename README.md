@@ -9,14 +9,46 @@ In short the project creates a method of converting a graph data store into macr
 <img src="https://github.com/srbaird/PolicyComponentsForNeo4J/blob/master/docs/graph.jpg" alt="Graph Example"  >
 </p>
 
-...would be converted into a composite structure.
+...would be converted into a composite structure as follows.
 
 <p align="center">
 <img src="https://github.com/srbaird/PolicyComponentsForNeo4J/blob/master/docs/structure.jpg" alt="Structure Example"  >
 </p>
 
 ___
+
+While this implementation is broadly similar to the other [example](https://github.com/srbaird/PolicyComponentsForDataStore) it implements an extra feature which allows select predicates to be applied to the composite structure. Both basic structures [Entity](https://github.com/srbaird/PolicyComponentsForNeo4J/blob/master/src/main/java/com/bac/components/Entity.java) and [Relationship](https://github.com/srbaird/PolicyComponentsForNeo4J/blob/master/src/main/java/com/bac/components/Relationship.java) implement default behaviour encapsulated in [ContextAware](https://github.com/srbaird/PolicyComponentsForNeo4J/blob/master/src/main/java/com/bac/components/ContextAware.java). This allows any subclass of these basic structures to respond to a [Context](https://github.com/srbaird/PolicyComponentsForNeo4J/blob/master/src/main/java/com/bac/components/Context.java) which determines whether that component is included in the results of a predicate.
+The [Dispatcher](https://github.com/srbaird/PolicyComponentsForNeo4J/blob/master/src/main/java/com/bac/application/impl/LateBindingContextDispatcher.groovy) is a Groovy class which allows it to overcome the Java's static binding on overloaded methods. This means that the appropriate method for each Context will be derived at runtime. Any class implementing ContextAware may implement a method which will be discovered without having to be registered. For example
+
+```
+class SomeEntity extends Entity  {
+...
+	boolean accept(SomeDateContext context) {
+
+		return context.isFieldValid(someLocalField);
+	}
+
+}
+```
+
+This dispatching behaviour is combined with a [predicate](https://github.com/srbaird/PolicyComponentsForNeo4J/blob/master/src/main/java/com/bac/application/predicate/Where.java) builder which allows complex conditional views of a data structure to be obtained.
+
+```
+import static com.bac.application.predicate.Where.where;
+import static com.bac.application.predicate.Where.and;
+import static com.bac.application.predicate.Where.or;
+
+	ContextAware element;
+
+	boolean isValid = where(dateContext, and(typeContext, or(privilegeContext))).apply(element);
+
+```
+
+In this case the element that satisfies the date context AND either the type context OR the privilege context will return true for this query.
+
 ___
+
+
 
 If building this project using Eclipse it may be necessary to enable Groovy. The following is an example to achiive this.
 
