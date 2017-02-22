@@ -1,6 +1,6 @@
 ## Policy Database on [Neo4j](https://neo4j.com)
 
-This a section of an existing application which used Neo4j as data persistence which broadly mirrors the functionality of the Google Datastore [example](https://github.com/srbaird/PolicyComponentsForDataStore). This other example adds includes use cases and a [document]() exists to give background into the approach
+This a section of an existing application which used Neo4j as data persistence which broadly mirrors the functionality of the Google Datastore [example](https://github.com/srbaird/PolicyComponentsForDataStore). This other example adds includes use cases and a [document](https://github.com/srbaird/PolicyComponentsForNeo4J/blob/master/docs/Modelling%20Data%20With%20Entities%20and%20Relationships.pdf) exists to give background into the approach
 ___
 
 In short the project creates a method of converting a graph data store into macro entities based on a composite pattern. Thus a graph of entities and relationships starting at the centre node...
